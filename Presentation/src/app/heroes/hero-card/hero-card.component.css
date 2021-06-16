@@ -1,0 +1,38 @@
+.row {
+  flex-flow: row;
+  margin-bottom: 0.4rem;
+}
+
+.heroContainer {
+  border: 5px solid deepskyblue;
+  margin-bottom: 3rem;
+  color: greenyellow;
+  border-radius: 15px;
+  margin-top: 2.5rem;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.descriptionSpan {
+  background: #9bff5c4d;
+  /*//black;*/
+  font-size: large;
+  padding: 3px;
+  border-radius: 9px;
+}
+
+.description {
+  text-align: right;
+}
+
+.data {
+  text-align: left;
+}
+
+.buttonsContainer {
+  margin-top: 1.5rem;
+}
+
+.trainButton, .deleteButton {
+  width: 100%;
+}

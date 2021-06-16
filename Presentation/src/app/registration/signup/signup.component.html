@@ -1,0 +1,30 @@
+<div class="jumbotron mt-5 signup-jumbo">
+  <form #formRef='ngForm' (ngSubmit)='onSubmit(formRef)' class="">
+    <h1 class="display-4 text-center">Signup Form</h1>
+    <hr>
+    <div class="form-group mb-3">
+      <label for="email" class="email">Email</label>
+      <input type="email" class="form-control" name="email" ngModel required email>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password"
+             ngModel required password>
+    </div>
+    <div class="form-group mb-3">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" ngModel required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="familyName">Family Name</label>
+      <input type="text" class="form-control" name="familyName" ngModel required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="age">Age</label>
+      <input type="number" class="form-control" name="age" ngModel required>
+    </div>
+    <label class="d-block mb-2"><span *ngIf="signupMeassage!= '' " class="errorLabel">{{signupMeassage}}</span></label>
+    <button class="btn btn-primary btn-lg btn-block" [disabled]='!formRef.valid' type="submit">Signup!</button>
+  </form>
+</div>

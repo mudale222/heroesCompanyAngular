@@ -1,0 +1,10 @@
+<div class="jumbotron mt-5 heroSCreen-jumbo">
+  <h1 class="display-4 text-center">Hero Screen</h1>
+  <button class="btn btn-primary" routerLink="createHero">
+    Create New
+  </button>
+  <hr>
+  <div class="heroesContainer">
+    <app-hero-card *ngFor="let hero of heroes; let i= index;" [hero]='hero' [index]='i'></app-hero-card>
+  </div>
+</div>

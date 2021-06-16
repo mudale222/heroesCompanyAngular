@@ -1,0 +1,17 @@
+input, select {
+  max-width: 25%;
+  margin-left: 0.5rem;
+  display: block;
+}
+
+label {
+  float: left;
+  display: inline-block;
+  margin-left: 2rem;
+  min-width: 20rem;
+  min-width: 20rem;
+  text-align: end;
+  margin-right: 3rem;
+  font-weight: 700;
+  color: springgreen;
+}

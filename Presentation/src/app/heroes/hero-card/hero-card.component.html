@@ -1,0 +1,75 @@
+
+<div class="heroContainer col-md-5 col-md-offset-1 col-sm-6 col-xs-12 d-inline-block">
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">Name:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.Name}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">IsAttacker:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.IsAttacker ? "Yes" : "No"}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">InitialTrainDate:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.InitialTrainDate}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">SuitColor:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.SuitColor}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">StartingPower:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.StartingPower}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">CurrentPower:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.CurrentPower}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">TrainedDate:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.TrainedDate}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="description col">
+      <span class="descriptionSpan">TrainedCount:</span>
+    </div>
+    <div class="data col">
+      <span class="dataSpan">{{hero.TrainedCount}}</span>
+    </div>
+  </div>
+  <div class="row buttonsContainer">
+    <div class="col trainButtonContainer">
+      <button class="btn btn-lg btn-success trainButton" (click)="onTrain(hero.Id)">TRAIN</button>
+    </div>
+    <div class="col deleteButtonContainer">
+      <button class="btn btn-lg btn-danger deleteButton" (click)="onDelete(hero.Id)">DELETE</button>
+    </div>
+  </div>
+</div>

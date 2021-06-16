@@ -1,0 +1,10 @@
+.signup-jumbo {
+    min-width: 45vw!important;
+}
+
+.errorLabel {
+  background: black;
+  border-radius: 2px;
+  padding: 5px;
+  color:red;
+}

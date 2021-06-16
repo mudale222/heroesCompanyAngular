@@ -1,0 +1,28 @@
+
+
+<div class="jumbotron mt-5 createHero-jumbo createHeroContainer">
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)" class="p-3">
+    <h1 class="display-4 text-center">Create Hero</h1>
+    <hr>
+    <div class="form-group mb-4">
+      <label for="Name" class="heroName">Name</label>
+      <input type="text" name="Name" class="form-control" ngModel required  />
+    </div>
+    <div class="form-group mb-4">
+      <label for="IsAttacker" class="isAttacker">Is Attacker?</label>
+      <input type="checkbox" id="IsAttacker" name="IsAttacker" ngModel  />
+    </div>
+    <div class="form-group mb-4">
+      <label for="suitColor" class="suitColor">Suit Color</label>
+      <select class="form-control" id="SuitColor" name="SuitColor" ngModel  required>
+        <option *ngFor="let color of colors ;" [value]="color" selected="selected">{{color}}</option>
+      </select>
+    </div>
+    <div class="form-group mb-4">
+      <label for="StartingPower" class="startingPower">StartingPower</label>
+      <input type="number" class="form-control" name="StartingPower" ngModel required  />
+    </div>
+    <button class="btn btn-success btn-lg" [disabled]="!formRef.valid" type="submit">Create!</button>
+  </form>
+</div>
+

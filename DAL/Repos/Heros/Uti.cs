@@ -20,13 +20,5 @@ namespace heroesCompanyAngular {
             hero.TrainedDate = DateTime.Now;
             hero.CurrentPower = Uti.Add10PrecentOrLess(hero.CurrentPower);
         }
-
-        public static bool IsCanTrain(Hero hero) {
-            if (hero.TrainedDate.Day != DateTime.Now.Day)
-                hero.TrainedCount = 0;
-            if (hero.TrainedCount < 5)
-                return true;
-            return false;
-        }
     }
 }

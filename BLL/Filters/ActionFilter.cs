@@ -31,7 +31,7 @@ namespace heroesCompanyAngular.Filters {
                 return;
             }
 
-            if (!Uti.IsCanTrain(hero)) {
+            if (!IsCanTrain(hero)) {
                 context.Result = new BadRequestObjectResult(new Response {
                     IsSuccessed = false,
                     Error = new Error(406, "Can't train more then 5 time a day!!")
@@ -54,6 +54,14 @@ namespace heroesCompanyAngular.Filters {
         public void OnActionExecuted(ActionExecutedContext context) {
             // Do something after the action executes.
             //MyDebug.Write(MethodBase.GetCurrentMethod(), context.HttpContext.Request.Path);
+        }
+
+        public bool IsCanTrain(Hero hero) {
+            if (hero.TrainedDate.Day != DateTime.Now.Day)
+                hero.TrainedCount = 0;
+            if (hero.TrainedCount < 5)
+                return true;
+            return false;
         }
     }
 }

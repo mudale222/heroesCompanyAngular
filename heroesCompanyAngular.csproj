@@ -47,8 +47,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Business\Controllers\OidcConfigurationController.cs" />
-    <Compile Remove="Business\Controllers\WeatherForecastController.cs" />
+    <Compile Remove="BLL\Controllers\OidcConfigurationController.cs" />
+    <Compile Remove="BLL\Controllers\WeatherForecastController.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,7 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Business\Logger\log4net.config">
+    <Content Update="BLL\Logger\log4net.config">
       <CopyToOutputDirectory> // Log some things
             log.Info("Hello logging world!");
             log.Error("Error!");

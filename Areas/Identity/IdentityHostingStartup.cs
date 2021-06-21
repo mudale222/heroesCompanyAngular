@@ -1,20 +1,9 @@
-﻿using System;
-using heroesCompanyAngular.Data;
-using heroesCompanyAngular.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Hosting;
 
-[assembly: HostingStartup(typeof(heroesCompanyAngular.Areas.Identity.IdentityHostingStartup))]
-namespace heroesCompanyAngular.Areas.Identity
-{
-    public class IdentityHostingStartup : IHostingStartup
-    {
-        public void Configure(IWebHostBuilder builder)
-        {
+[assembly: HostingStartup(typeof(heroesCompany.Areas.Identity.IdentityHostingStartup))]
+namespace heroesCompany.Areas.Identity {
+    public class IdentityHostingStartup : IHostingStartup {
+        public void Configure(IWebHostBuilder builder) {
             builder.ConfigureServices((context, services) => {
             });
         }

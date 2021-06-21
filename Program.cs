@@ -1,9 +1,9 @@
-using heroesCompanyAngular.Log4net;
+using heroesCompany.Log4net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 
-namespace heroesCompanyAngular {
+namespace heroesCompany {
     public class Program {
 
         public static void Main(string[] args) {

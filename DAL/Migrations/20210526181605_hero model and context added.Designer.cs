@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using heroesCompanyAngular.Data;
+using heroesCompany.Data;
 
-namespace heroesCompanyAngular.Data.Migrations
+namespace heroesCompany.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210526181605_hero model and context added")]

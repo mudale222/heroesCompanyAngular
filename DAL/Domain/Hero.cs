@@ -1,13 +1,9 @@
-﻿using heroesCompanyAngular.Models;
-using Md_exercise.Core.Repositories;
+﻿using heroesCompany.Models.HelperModels;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
-namespace heroesCompanyAngular.Models {
+namespace heroesCompany.Models {
     public enum Color { Red, Green, Blue, White, Black, Yellow, Grey }
     public class Hero : Ientity {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +13,6 @@ namespace heroesCompanyAngular.Models {
         public string Name { get; set; }
         [Required]
         public bool IsAttacker { get; set; }
-        //public string GuidId { get; set; }
         public DateTime InitialTrainDate { get; set; }
         [Required]
         public Color SuitColor { get; set; }

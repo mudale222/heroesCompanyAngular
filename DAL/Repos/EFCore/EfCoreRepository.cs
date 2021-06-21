@@ -1,19 +1,16 @@
-﻿using heroesCompanyAngular.Models;
-using Md_exercise.Core.Repositories;
+﻿using heroesCompany.Models.HelperModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.Data.EFCore {
-    public  class EfCoreRepository<T> : IEfCoreRepository<T> where  T : class, Ientity {
-        //private readonly ApplicationDbContext _context;
+namespace heroesCompany.Data.EFCore {
+    public class EfCoreRepository<T> : IEfCoreRepository<T> where T : class, Ientity {
         protected DbContext _context;
         public EfCoreRepository(DbContext context) {
             _context = context;
         }
-        //public IQueryable<Hero> heroes => _context.Heroes;
 
         public IQueryable<T> entities => _context.Set<T>();
 

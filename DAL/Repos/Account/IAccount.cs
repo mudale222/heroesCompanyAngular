@@ -1,12 +1,8 @@
-﻿using heroesCompanyAngular.dto;
-using heroesCompanyAngular.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using heroesCompany.dto;
+using heroesCompany.Models;
 using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.ControllersServices {
+namespace heroesCompany.ControllersServices {
     public interface IAccount {
         Task<Response> Create(ApplicationUserDto registrtionData);
     }

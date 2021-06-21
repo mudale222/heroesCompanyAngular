@@ -1,24 +1,19 @@
-using AutoMapper;
-using heroesCompanyAngular.ControllersServices;
-using heroesCompanyAngular.DAL.UnitOfWork;
-using heroesCompanyAngular.Data;
-using heroesCompanyAngular.Data.EFCore;
-using heroesCompanyAngular.Mapping;
-using heroesCompanyAngular.Models;
+using heroesCompany.ControllersServices;
+using heroesCompany.DAL.UnitOfWork;
+using heroesCompany.Data;
+using heroesCompany.Models;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
-namespace heroesCompanyAngular {
+namespace heroesCompany {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
@@ -53,7 +48,7 @@ namespace heroesCompanyAngular {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedEmail = false;
-                
+
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer().AddJwtBearerClientAuthentication()
@@ -90,7 +85,7 @@ namespace heroesCompanyAngular {
                 app.UseHsts();
             }
 
-            
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -122,7 +117,7 @@ namespace heroesCompanyAngular {
                 }
             });
 
-            
+
         }
     }
 }

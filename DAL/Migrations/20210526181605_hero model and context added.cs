@@ -1,16 +1,12 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace heroesCompanyAngular.Data.Migrations
-{
-    public partial class heromodelandcontextadded : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+namespace heroesCompany.Data.Migrations {
+    public partial class heromodelandcontextadded : Migration {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "Heroes",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsAttacker = table.Column<bool>(type: "bit", nullable: false),
@@ -22,8 +18,7 @@ namespace heroesCompanyAngular.Data.Migrations
                     TrainedCount = table.Column<byte>(type: "tinyint", nullable: false),
                     TrainerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Heroes", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Heroes_AspNetUsers_TrainerId",
@@ -39,8 +34,7 @@ namespace heroesCompanyAngular.Data.Migrations
                 column: "TrainerId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "Heroes");
         }

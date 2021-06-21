@@ -1,15 +1,15 @@
-﻿using heroesCompanyAngular.Models;
+﻿using AutoMapper;
+using heroesCompany.Data.EFCore;
+using heroesCompany.DataAccess.Heros;
+using heroesCompany.dto;
+using heroesCompany.Models;
+using heroesCompany.Models.HelperModels;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
-using heroesCompanyAngular.Data.EFCore;
 using System.Security.Claims;
-using heroesCompanyAngular.Models.HelperModels;
-using heroesCompanyAngular.dto;
-using AutoMapper;
-using heroesCompanyAngular.DataAccess.Heros;
+using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.Data {
+namespace heroesCompany.Data {
     public class HeroRepository : EfCoreRepository<Hero>, IHeroRepository {
         private readonly ApplicationDbContext context;
         private readonly IMapper _mapper;

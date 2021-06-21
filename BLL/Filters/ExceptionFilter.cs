@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Hosting;
 
-namespace heroesCompanyAngular.filters {
+namespace heroesCompany.Filters {
     public class ExceptionFilter : IExceptionFilter {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IModelMetadataProvider _modelMetadataProvider;

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace heroesCompanyAngular.Models {
-    public class Response
-    {
+namespace heroesCompany.Models {
+    public class Response {
         public bool IsSuccessed { get; set; }
         public Error Error { get; set; }
         public Object Data { get; set; }
@@ -11,8 +9,7 @@ namespace heroesCompanyAngular.Models {
     }
 
 
-    public class Error
-    {
+    public class Error {
         public Error(int code, string msg) { this.ErrorCode = code; this.ErrorMessage = msg; }
         public int ErrorCode { get; set; }
         public string ErrorMessage { get; set; }

@@ -1,13 +1,12 @@
-﻿using heroesCompanyAngular.Data;
-using heroesCompanyAngular.Models;
-using heroesCompanyAngular.Models.HelperModels;
+﻿using heroesCompany.Data;
+using heroesCompany.Models;
+using heroesCompany.Models.HelperModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Linq;
-using System.Security.Claims;
 
-namespace heroesCompanyAngular.Filters {
+namespace heroesCompany.Filters {
     public class ActionFilter : IActionFilter {
         private readonly HeroRepository _heroRepo;
         private readonly ApplicationDbContext _context;
@@ -19,7 +18,6 @@ namespace heroesCompanyAngular.Filters {
 
         public void OnActionExecuting(ActionExecutingContext context) {
             // Do something before the action executes.
-            //Debug.Write(MethodBase.GetCurrentMethod(), context.HttpContext.Request.Path);
             var cardIdClass = (CardId)context.ActionArguments["cardIdClass"];
             var hero = _heroRepo.GetAsync(new Guid(cardIdClass.Id)).FirstOrDefault();
 
@@ -53,7 +51,6 @@ namespace heroesCompanyAngular.Filters {
 
         public void OnActionExecuted(ActionExecutedContext context) {
             // Do something after the action executes.
-            //MyDebug.Write(MethodBase.GetCurrentMethod(), context.HttpContext.Request.Path);
         }
 
         public bool IsCanTrain(Hero hero) {

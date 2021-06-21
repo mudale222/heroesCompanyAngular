@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using heroesCompanyAngular.dto;
-using heroesCompanyAngular.Models;
+using heroesCompany.dto;
+using heroesCompany.Models;
 using System;
 
 
-namespace heroesCompanyAngular.Mapping {
+namespace heroesCompany.Mapping {
     public class HeroProfile : Profile {
         const decimal MAX_POWER = 100;
         const decimal MIN_POWER = 1;
@@ -22,6 +22,6 @@ namespace heroesCompanyAngular.Mapping {
             .ForMember(hero => hero.TrainedDate, opt => opt.MapFrom(heroDto => DateTime.Now))
             .ForMember(hero => hero.StartingPower, opt => opt.MapFrom(heroDto => SetPower(heroDto.StartingPower)))
             .ForMember(hero => hero.CurrentPower, opt => opt.MapFrom(heroDto => SetPower(heroDto.StartingPower)));
-        }  
+        }
     }
 }

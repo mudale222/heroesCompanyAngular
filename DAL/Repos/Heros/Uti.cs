@@ -1,10 +1,7 @@
-﻿using heroesCompanyAngular.Models;
+﻿using heroesCompany.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace heroesCompanyAngular {
+namespace heroesCompany {
     public static class Uti {
         public static decimal Add10PrecentOrLess(decimal num) {
             Random random = new Random();

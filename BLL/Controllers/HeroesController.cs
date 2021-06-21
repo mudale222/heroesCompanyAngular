@@ -1,35 +1,30 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using heroesCompanyAngular.Data;
-using heroesCompanyAngular.Models;
+﻿using heroesCompany.DAL.UnitOfWork;
+using heroesCompany.dto;
+using heroesCompany.Filters;
+using heroesCompany.Models;
+using heroesCompany.Models.HelperModels;
+using heroesCompany.Models.ResponseModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using heroesCompanyAngular.dto;
-using heroesCompanyAngular.Models.HelperModels;
-using heroesCompanyAngular.Models.ResponseModels;
-using heroesCompanyAngular.filters;
-using heroesCompanyAngular.Filters;
-using heroesCompanyAngular.DAL.UnitOfWork;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.Controllers {
+namespace heroesCompany.Controllers {
     [Authorize]
     [TypeFilter(typeof(ExceptionFilter))]
     public class HeroesController : Controller {
-        private readonly HeroRepository _heroRepo;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly UnitOfWork unitOfWork;
 
-        public HeroesController(HeroRepository heroRepo, UnitOfWork unitOfWork) {
-            _heroRepo = heroRepo;
-            _unitOfWork = unitOfWork;
+        public HeroesController(UnitOfWork unitOfWork) {
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody][Bind] HeroDto heroData) {
 
             if (ModelState.IsValid) {
-                //var hero = await _heroRepo.Create(heroData, User);
-                var hero = await _unitOfWork.HeroRepo.Create(heroData, User);
-                await _unitOfWork.SaveAsync();
+                var hero = await unitOfWork.HeroRepo.Create(heroData, User);
+                await unitOfWork.SaveAsync();
                 return Ok(new Response { IsSuccessed = true, Data = hero });
             }
             return StatusCode(StatusCodes.Status400BadRequest,
@@ -39,8 +34,7 @@ namespace heroesCompanyAngular.Controllers {
 
         [HttpPost]
         public ObjectResult GetHeroes() {
-            //var orderdHeroes = _heroRepo.GetAll4User(User);
-            var orderdHeroes = _unitOfWork.HeroRepo.GetAll4User(User);
+            var orderdHeroes = unitOfWork.HeroRepo.GetAll4User(User);
             return Ok(new Response { IsSuccessed = true, Data = orderdHeroes });
         }
 
@@ -48,9 +42,8 @@ namespace heroesCompanyAngular.Controllers {
         [HttpPatch]
         [TypeFilter(typeof(ActionFilter))]
         public async Task<IActionResult> Train([FromBody][Bind] CardId cardIdClass) {
-            //var hero = await _heroRepo.Train(cardIdClass);
-            var hero = await _unitOfWork.HeroRepo.Train(cardIdClass);
-            await _unitOfWork.SaveAsync();
+            var hero = await unitOfWork.HeroRepo.Train(cardIdClass);
+            await unitOfWork.SaveAsync();
             return Ok(new Response {
                 IsSuccessed = true,
                 Data = new PowerUpdateResponse() {
@@ -62,10 +55,9 @@ namespace heroesCompanyAngular.Controllers {
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromBody][Bind] CardId cardIdClass) {
-            //var removedHero = await _heroRepo.Remove(cardIdClass, User);
-            var removedHero = await _unitOfWork.HeroRepo.Remove(cardIdClass, User);
+            var removedHero = await unitOfWork.HeroRepo.Remove(cardIdClass, User);
             if (removedHero is not null) {
-                await _unitOfWork.SaveAsync();
+                await unitOfWork.SaveAsync();
                 return Ok(new Response { IsSuccessed = true, Data = removedHero });
             }
             return StatusCode(403, new Response { IsSuccessed = false, Error = new Error(403, "No hero to remove!") });

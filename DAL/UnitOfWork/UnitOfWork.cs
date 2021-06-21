@@ -1,15 +1,13 @@
-﻿using System;
-using heroesCompanyAngular.Models;
-using heroesCompanyAngular.Data.EFCore;
-using Microsoft.EntityFrameworkCore;
-using heroesCompanyAngular.DataAccess.Heros;
-using heroesCompanyAngular.Data;
-using AutoMapper;
-using System.Threading.Tasks;
-using heroesCompanyAngular.ControllersServices;
+﻿using AutoMapper;
+using heroesCompany.ControllersServices;
+using heroesCompany.Data;
+using heroesCompany.Data.EFCore;
+using heroesCompany.Models;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.DAL.UnitOfWork {
+namespace heroesCompany.DAL.UnitOfWork {
     public class UnitOfWork : IDisposable {
 
         private readonly ApplicationDbContext context;
@@ -34,10 +32,6 @@ namespace heroesCompanyAngular.DAL.UnitOfWork {
             this.signInManager = signInManager;
         }
 
-        //HeroesDbContext IUnitOfWork.DbContext => this.dbContext as HeroesDbContext;
-
-
-        //IHeroRepository UnitOfWork.HeroRepo => this.heroRepo;
 
         public HeroRepository HeroRepo {
             get {

@@ -1,19 +1,17 @@
-﻿using heroesCompanyAngular.Data;
-using heroesCompanyAngular.Data.EFCore;
-using heroesCompanyAngular.dto;
-using heroesCompanyAngular.Models;
-using Md_exercise.Core.Repositories;
+﻿using heroesCompany.Data;
+using heroesCompany.Data.EFCore;
+using heroesCompany.dto;
+using heroesCompany.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace heroesCompanyAngular.ControllersServices {
-    //public class HeroRepository : EfCoreRepository<Hero>, IHeroRepository {
+namespace heroesCompany.ControllersServices {
 
     public class AccountRepository : EfCoreRepository<ApplicationUser>, IAccount {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ApplicationDbContext context;
-        public  SignInManager<ApplicationUser> signManager { get; }
+        public SignInManager<ApplicationUser> signManager { get; }
 
         public AccountRepository(
             ApplicationDbContext context, UserManager<ApplicationUser> userManager,

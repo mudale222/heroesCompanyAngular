@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Md_exercise.Core.Repositories {
+namespace heroesCompany.Models.HelperModels {
     public interface Ientity {
         public Guid Id { get; set; }
     }

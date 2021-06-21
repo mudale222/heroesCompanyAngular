@@ -10,7 +10,7 @@ export enum Color {
   Red, Green, Blue, White, Black, Yellow, Grey
 }
 export class HeroCardData {
-
+  public colorText:string
   constructor(
     public Id: string,
     public Name: string,
@@ -24,6 +24,7 @@ export class HeroCardData {
   ) {
     this.TrainedDate = this.formatDate(TrainedDate);
     this.InitialTrainDate = this.formatDate(InitialTrainDate);
+    this.colorText = Color[SuitColor]
   }
 
   formatDate(dateStr: string): string {
@@ -39,9 +40,8 @@ export class HeroCardData {
 })
 
 export class HeroCardComponent implements OnInit {
-  @Input() hero: HeroCardData
-  @Input() index: number
-  @Input() color: Color
+  @Input() hero!: HeroCardData
+  @Input() index!: number
 
   constructor(private heroServerService: HeroesServerService, private modalService: ModalService) { }
 

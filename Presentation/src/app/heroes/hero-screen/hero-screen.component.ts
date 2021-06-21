@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HeroScreenComponent implements OnInit, OnDestroy {
   heroes: HeroCardData[] = []
-  subscriptionToHeroIdDeleted: Subscription
+  subscriptionToHeroIdDeleted!: Subscription
   constructor(private heroesServerService: HeroesServerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

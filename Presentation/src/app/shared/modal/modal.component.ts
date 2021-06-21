@@ -9,8 +9,8 @@ declare var $: any;
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  @Input() modalTitle: string
-  @Input() modalText: string
+  @Input() modalTitle!: string
+  @Input() modalText!: string
   @Input() modalStyle: any 
   constructor(private modalService: ModalService) { }
 

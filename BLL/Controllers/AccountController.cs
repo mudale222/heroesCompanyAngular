@@ -1,4 +1,5 @@
 ﻿using heroesCompanyAngular.ControllersServices;
+using heroesCompanyAngular.DAL.UnitOfWork;
 using heroesCompanyAngular.Data;
 using heroesCompanyAngular.dto;
 using heroesCompanyAngular.filters;
@@ -13,27 +14,17 @@ using System.Threading.Tasks;
 namespace heroesCompanyAngular.Controllers {
     [TypeFilter(typeof(ExceptionFilter))]
     public class AccountController : Controller {
-        private readonly SignInManager<ApplicationUser> _signManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
-        private readonly IAccount _account;
+        private readonly UnitOfWork _unitOfWork;
 
-        public AccountController(
-            ApplicationDbContext context,
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signManager,
-            IAccount account
-            ) {
-            _userManager = userManager;
-            _signManager = signManager;
-            _context = context;
-            _account = account;
+        public AccountController(UnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
 
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ApplicationUserDto registrtionData) {
-            var regResult = await _account.Create(registrtionData);
+            //var regResult = await _account.Create(registrtionData);
+            var regResult = await _unitOfWork.Account.Create(registrtionData);
             if (regResult.IsSuccessed)
                 return Ok(new Response { IsSuccessed = true });
             return StatusCode(StatusCodes.Status400BadRequest,
@@ -47,7 +38,7 @@ namespace heroesCompanyAngular.Controllers {
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] ApplicationUserLoginDto loginData) {
             if (loginData is not null) {
-                var result = await _signManager.PasswordSignInAsync(loginData.userName, loginData.password, false, false);
+                var result = await _unitOfWork.Account.signManager.PasswordSignInAsync(loginData.userName, loginData.password, false, false);
                 if (result.Succeeded)
                     return Ok(new Response { IsSuccessed = true });
                 return Unauthorized(new Response { IsSuccessed = false, Error = new Error(401, "Login fail! check your password and user name!") });
@@ -58,7 +49,7 @@ namespace heroesCompanyAngular.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Logout() {
-            await _signManager.SignOutAsync();
+            await _unitOfWork.Account.signManager.SignOutAsync();
             return Ok(new Response { IsSuccessed = true });
         }
     }

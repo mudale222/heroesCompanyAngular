@@ -1,5 +1,6 @@
 using AutoMapper;
 using heroesCompanyAngular.ControllersServices;
+using heroesCompanyAngular.DAL.UnitOfWork;
 using heroesCompanyAngular.Data;
 using heroesCompanyAngular.Data.EFCore;
 using heroesCompanyAngular.Mapping;
@@ -27,12 +28,13 @@ namespace heroesCompanyAngular {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-            //automapper
+            //automapper for dto's
             services.AddAutoMapper(typeof(Startup));
-            //my repo
+            //repos
             services.AddScoped<HeroRepository>();
-            //my service
-            services.AddScoped<IAccount, Account>();
+            services.AddScoped<IAccount, AccountRepository>();
+            //unitOfWork
+            services.AddScoped<UnitOfWork>();
 
             //db context
             services.AddDbContext<ApplicationDbContext>(options =>
